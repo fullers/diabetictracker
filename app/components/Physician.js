@@ -10,6 +10,9 @@ var Physician = React.createClass ({
 			<div className="col-md-6 col-md-offset-3">
 			<div className="well well-sm">
 			<form>
+				<div className="form-group text-center">
+					<h2>Physician Information</h2>
+				</div>
 				<div className="form-group">
 					<label htmlFor="name"><strong>Name</strong></label>
 					<input type="text" value={this.value} className="form-control" id="name" onChange="" required />
@@ -19,7 +22,10 @@ var Physician = React.createClass ({
 					<input type="email" value={this.value} className="form-control" id="username" onChange="" required />
 				</div>
 				<div className="form-group">
-						
+					<select>
+						<option value="Doctor">Doctor</option>
+						<option value="Dietician">Dietician</option>
+					</select>
 				</div>
 				
 				<div className="form-group text-center">

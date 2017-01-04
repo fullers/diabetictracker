@@ -1,9 +1,10 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
+  var Physician = sequelize.define("Physician", {
+    name: DataTypes.STRING,
     email: DataTypes.STRING,
-    password_hash: DataTypes.STRING
+    type: DataTypes.STRING 
   }, {
     // don't add the timestamp attributes (updatedAt, createdAt)
       //timestamps: false,
@@ -23,20 +24,20 @@ module.exports = function(sequelize, DataTypes) {
     freezeTableName: true,
 
     // define the table's name
-    tableName: 'users',
+    tableName: 'physician',
 
     classMethods: {
-      associate: function(models) {
-        User.hasMany(models.Physician, {
-          onDelete: "CASCADE",
-          hooks: true,
-          foreignKey: {
-            allowNull: false
-          }
-        })
-      }
+      // associate: function(models) {
+      //   User.hasMany(models.Cat, {
+      //     onDelete: "CASCADE",
+      //     hooks: true,
+      //     foreignKey: {
+      //       allowNull: false
+      //     }
+      //   })
+      // }
     }
   })
 
-  return User;
+  return Physician;
 };

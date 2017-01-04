@@ -13,6 +13,9 @@ var Profile = React.createClass ({
 			<div className="col-md-6 col-md-offset-3">
 			<div className="well well-sm">
 			<form>
+				<div className="form-group text-center">
+					<h2>User Profile</h2>
+				</div>
 				<div className="form-group">
 				<label htmlFor="name"><strong>Name</strong></label>
 					<input type="text" value={this.value} className="form-control" id="name" onChange="" required />
@@ -44,7 +47,6 @@ var Profile = React.createClass ({
 			</div>
 			</div>
 			</div>
-
 		)
 	}
 });

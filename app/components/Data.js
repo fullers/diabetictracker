@@ -12,6 +12,9 @@ var Data = React.createClass ({
 			<div className="col-md-6 col-md-offset-3">
 			<div className="well well-sm">
 			<form>
+				<div className="form-group text-center">
+					<h2>Enter Data</h2>
+				</div>
 				<div className="form-group">
 				<label htmlFor="date"><strong>Date</strong></label>
 					<input type="date" value={this.value} className="form-control" id="date" onChange="" required />
