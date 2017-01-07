@@ -6,6 +6,12 @@ var view = require('./View');
 var helpers = require('../utils/helpers');
 
 var Data = React.createClass ({
+	// handleAdd: function () {
+	// 	return (
+			
+	// 	)
+		
+	// },
 	render: function() {
 		return (
 			<div className="row">
@@ -28,12 +34,11 @@ var Data = React.createClass ({
 					<input type="text" value={this.value} className="form-control" id="level" onChange="" required />
 				</div>
 				<div className="form-group text-center">
-					<button type="button" className="btn btn-default" onClick=""><h4><i className="fa fa-plus"></i> Add</h4>
+					<button type="button" className="btn btn-default" onClick={this.handleAdd}><h4><i className="fa fa-plus"></i> Add</h4>
 					</button>
 				</div>
 				<div className="form-group text-center">
-					<button type="button" className="btn btn-default" onClick=""><h4><i className="fa fa-eye"></i> View</h4>
-					</button>
+					<a href="#/view" className="btn btn-default"><h4><i className="fa fa-eye"></i> View</h4></a>
 				</div>
 			</form>
 			</div>

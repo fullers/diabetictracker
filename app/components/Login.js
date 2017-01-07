@@ -18,11 +18,15 @@ var Login = React.createClass ({
 	// 	newState[event.target.id] = event.target.value;
 	// 	this.setState(newState);
 	// },
-	// handleSubmit: function(){
+	handleLogin: function() {
 
-	// 	// this.props.updateSearch(this.state.term, this.state.start, this.state.end);
-	// 	// return false;
-	// },
+		event.preventDefault();
+		return (
+			<a href="#/data"></a>
+		);
+		
+
+	},
 	render: function() {
 		return (
 			<div className="row">
@@ -38,12 +42,11 @@ var Login = React.createClass ({
 						<input type="text" value="" className="form-control" id="password" onChange="" required />
 					</div>
 					<div className="form-group text-center">
-					<button type="button" className="btn btn-default" onClick=""><h4><i className="fa fa-lock"></i> Login</h4>
-					</button>
+						<button type="button" className="btn btn-default" onClick={this.handleLogin}><h4><i className="fa fa-lock"></i> Login</h4>
+						</button>
 					</div>
 					<div className="form-group text-center">
-					<button type="button" className="btn btn-default" onClick=""><h4><i className="fa fa-user-circle"></i> Create</h4>
-					</button>
+						<a href="#/profile" className="btn btn-default"><h4><i className="fa fa-user-circle"></i> Create</h4></a>
 					</div>
 				</form>
 			</div>
