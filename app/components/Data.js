@@ -6,7 +6,7 @@ var view = require('./View');
 var helpers = require('../utils/helpers');
 
 var Data = React.createClass ({
-	// handleAdd: function () {
+	// handleChange: function () {
 	// 	return (
 			
 	// 	)

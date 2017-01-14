@@ -40,8 +40,9 @@ var Profile = React.createClass ({
 					</button>
 				</div>
 				<div className="form-group text-center">
-					<button type="button" className="btn btn-default" onClick=""><h4><i className="fa fa-plus"></i> Add Physician</h4>
-					</button>
+					<div className="form-group text-center">
+					<a href="#/physician" className="btn btn-default"><h4><i className="fa fa-plus"></i> Add Physician</h4></a>
+				</div>
 				</div>
 			</form>
 			</div>

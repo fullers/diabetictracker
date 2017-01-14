@@ -32,7 +32,7 @@ var Login = React.createClass ({
 			<div className="row">
 			<div className="col-md-6 col-md-offset-3">
 			<div className="well well-sm">
-				<form>
+				<form onSubmit="#/Data">
 					<div className="form-group">
 						<label htmlFor="username"><strong>Username</strong></label>
 						<input type="text" value="" className="form-control" id="username" onChange="" required />
