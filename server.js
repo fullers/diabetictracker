@@ -1,9 +1,14 @@
 // Dependicies
 var express = require("express");
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
 var Sequelize = require('sequelize');
 var models  = require('./models');
+var User = require('./models/user');
+var passport = require('passport');
+var session = require('express-session');
+var 
 
 
 
