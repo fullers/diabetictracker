@@ -26,7 +26,7 @@ var Profile = require('../components/Profile.js');
 var Physician = require('../components/Physician.js');
 var Data = require('../components/Data.js');
 var View = require('../components/View.js');
-
+var UserChoice = require('../components/Userchoice.js');
 //export the routes
 module.exports = (
 	<Router history={hashHistory}>
@@ -37,6 +37,7 @@ module.exports = (
 				<Route path="physician" component={Physician} />
 				<Route path="data" component={Data} />
 				<Route path="view" component={View} />
+				<Route path="userchoice" component={UserChoice} />
 			{/*if the user selects any other path .. it takes them home */}
 				<IndexRoute component={Login} />
 		</Route>

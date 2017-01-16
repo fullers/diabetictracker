@@ -133,7 +133,7 @@ app.post("/addUser", function(req, res) {
   }
       function reRoute(req,res){
      if (req.user.userType === "User") {
-      res.redirect("#/data");
+      res.redirect("#/userchoice");
     } else if (req.userType === "Physician") {
       res.redirect("#/view");
     } else {
