@@ -32,11 +32,11 @@ module.exports = (
 	<Router history={hashHistory}>
 		<Route path="/" component={Main}>
 			{/*if the user selects search or save, show the appropriate component */}
-				<Route path="/login" component={Login} />
-				<Route path="/profile" component={Profile} />
-				<Route path="/physician" component={Physician} />
-				<Route path="/data" component={Data} />
-				<Route path="/view" component={View} />
+				<Route path="login" component={Login} />
+				<Route path="profile" component={Profile} />
+				<Route path="physician" component={Physician} />
+				<Route path="data" component={Data} />
+				<Route path="view" component={View} />
 			{/*if the user selects any other path .. it takes them home */}
 				<IndexRoute component={Login} />
 		</Route>
