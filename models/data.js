@@ -1,43 +1,18 @@
-"use strict";
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-module.exports = function(sequelize, DataTypes) {
-  var Data = sequelize.define("Data", {
-    date: DataTypes.DATE,
-    time: DataTypes.TIME,
-    level: DataTypes.STRING
-  }, {
-    // don't add the timestamp attributes (updatedAt, createdAt)
-      //timestamps: false,
+var dataSchema = new Schema ({
 
-    // don't delete database entries but set the newly added attribute deletedAt
-    // to the current date (when deletion was done). paranoid will only work if
-    // timestamps are enabled
-      //paranoid: true,
+  date: {
+    type: String
+  },
+  time: {
+    type: String
+  },
+  level: {
+    type: String
+  }
+});
 
-    // don't use camelcase for automatically added attributes but underscore style
-    // so updatedAt will be updated_at
-    underscored: true,
-
-    // disable the modification of tablenames; By default, sequelize will automatically
-    // transform all passed model names (first parameter of define) into plural.
-    // if you don't want that, set the following
-    freezeTableName: true,
-
-    // define the table's name
-    tableName: 'data',
-
-    classMethods: {
-      associate: function(models) {
-        Data.hasMany(models.User, {
-          onDelete: "CASCADE",
-          hooks: true,
-          foreignKey: {
-            allowNull: false
-          }
-        })
-      }
-    }
-  })
-
-  return Data;
-};
+var Data = mongoose.model("Data", dataSchema);
+module.exports = Data;

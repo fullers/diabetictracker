@@ -1,42 +1,15 @@
-"use strict";
+var mongoose = require("mongoose");
+var passportLocalMongoose = require("passport-local-mongoose");
 
-module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-    email: DataTypes.STRING,
-    password_hash: DataTypes.STRING
-  }, {
-    // don't add the timestamp attributes (updatedAt, createdAt)
-      //timestamps: false,
+var UserSchema = new mongoose.Schema({
+  username: String,
+  email: String,
+  password: String,
+  targetmin: String,
+  targetmax: String,
+  userType: String
+});
 
-    // don't delete database entries but set the newly added attribute deletedAt
-    // to the current date (when deletion was done). paranoid will only work if
-    // timestamps are enabled
-      //paranoid: true,
+UserSchema.plugin(passportLocalMongoose);
 
-    // don't use camelcase for automatically added attributes but underscore style
-    // so updatedAt will be updated_at
-    underscored: true,
-
-    // disable the modification of tablenames; By default, sequelize will automatically
-    // transform all passed model names (first parameter of define) into plural.
-    // if you don't want that, set the following
-    freezeTableName: true,
-
-    // define the table's name
-    tableName: 'users',
-
-    classMethods: {
-      associate: function(models) {
-        User.hasMany(models.Physician, {
-          onDelete: "CASCADE",
-          hooks: true,
-          foreignKey: {
-            allowNull: false
-          }
-        })
-      }
-    }
-  })
-
-  return User;
-};
+module.exports = mongoose.model("User", UserSchema);
