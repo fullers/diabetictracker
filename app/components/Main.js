@@ -11,7 +11,7 @@ var Main = React.createClass({
 		return (
 			<div className="container">
 				<div className="jumbotron">
-					<h1 className="text-center">Diabetic Tracker</h1>
+					<h1 className="text-center"><img src="/assets/images/Diabetes Monitor-48.png"/> Diabetic Tracker</h1>
 					<p className="lead text-center">Track your diabetic glucose levels!</p> 
 				</div>
 				<div className="container">
