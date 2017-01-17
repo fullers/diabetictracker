@@ -31,6 +31,13 @@ var helper = {
   		max: targetmax,
   		userType: userType
   	});
+  },
+
+   getData: function() {
+    return axios.get('/getData')
+    .then(function(response){
+        return response;
+    })
   }
 
 };

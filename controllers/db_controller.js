@@ -53,4 +53,16 @@ router.post("/addUser", function(req, res) {
   });
 });
 
+  router.get("/getData", function(req, res) {
+    Data.findAll().exec(function(err,docs) {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      }
+      else {
+        res.send(docs);
+      }
+    });
   });
+
+});
