@@ -109,23 +109,23 @@ var db = mongoose.connection;
 
 ### Diabetic Tracker - Login
 
-[Alt Text](public/assets/images/scrnshot-login.png?raw=true "Login Page")
+![Alt Text](public/assets/images/scrnshot-login.png?raw=true "Login Page")
 
 Enter a user name and password, then click on **Login** button to authenticate. 
 
-[Alt Text](public/assets/images/scrnshot-profile.png?raw=true "Profile Page")
+![Alt Text](public/assets/images/scrnshot-profile.png?raw=true "Profile Page")
 
 If the user does not have a profile setup then click on **Create** button. If the user clicks on **Add Physician**. 
 
-[Alt Text](public/assets/images/scrnshot-physician.png?raw=true "Physician Page")
+![Alt Text](public/assets/images/scrnshot-physician.png?raw=true "Physician Page")
 
 If the user creates a profile they can add their physician data (name and email).
 
-[Alt Text](public/assets/images/scrnshot-userchoice.png?raw=true "User Choice Page")
+![Alt Text](public/assets/images/scrnshot-userchoice.png?raw=true "User Choice Page")
 
 The user has a choice to either enter data or view data.
 
-[Alt Text](public/assets/images/scrnshot-enterdata.png?raw=true "Enter Data Page")
+![Alt Text](public/assets/images/scrnshot-enterdata.png?raw=true "Enter Data Page")
 
 The user may enter the date, time, and glucose level (mg/dl).
 
