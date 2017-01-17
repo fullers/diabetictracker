@@ -31,7 +31,7 @@ The following technologies, tools, and npm packages were used:
 	* Passport (Local Authentication)
 * Object Relational Mapping (ORM)
 * MongoDB and mongolab
-* [https://heroku.com](heroku) 
+* [Heroku](https://heroku.com) 
 * MVC and ORM Desgin
 
 ## Files and Folder Structure
