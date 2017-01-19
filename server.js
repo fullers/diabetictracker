@@ -58,44 +58,124 @@ app.get("/", autoRedirect, function(req, res) {
 
 //LOCAL AUTH
 
-app.post("/addPhysician", function(req, res) {
+app.get("/getData", function(req, res) {
+  // Prepare a query to find all users..
+  Data.find({})
+    // ..and on top of that, populate the data (replace the objectIds in the data array with bona-fide data)
+    .populate("Data")
+    // Now, execute the query
+    .exec(function(error, doc) {
+      // Send any errors to the browser
+      if (error) {
+        res.send(error);
+      }
+      // Or send the doc to the browser
+      else {
+        res.send(doc);
+      }
+    });
+});
 
-  Physician.create(new Physician({
+
+// app.post("/addPhysician", function(req, res) {
+
+//   Physician.create(new Physician({
+//     name: req.body.name,
+//     email: req.body.email,
+//     physicianType: req.body.physicianType
+//   }),
+
+//   req.body.password, function(err, user) {
+//     if(err){
+//       console.log(err);
+//       return res.sendFile(path.resolve(__dirname, "public", "index.html"));
+//     }
+//     passport.authenticate("local")(req, res, function() {
+//       res.redirect("/");
+//     });
+//   })
+// });
+
+// New Physician creation via POST route
+app.post("/addPhysician", function(req, res) {
+  // Use our Physician model to make a new physician from the req.body
+  var newPhysician = new Physician({
     name: req.body.name,
     email: req.body.email,
     physicianType: req.body.physicianType
-  }),
-
-  req.body.password, function(err, user) {
-    if(err){
-      console.log(err);
-      return res.sendFile(path.resolve(__dirname, "public", "index.html"));
+  });
+  // Save the new note to mongoose
+  newPhysician.save(function(error, doc) {
+    // Send any errors to the browser
+    if (error) {
+      res.send(error);
     }
-    passport.authenticate("local")(req, res, function() {
-      res.redirect("/");
-    });
-  })
+    // Otherwise
+    else {
+      // Find our user and push the new physician id into the User's physician array
+      User.findOneAndUpdate({}, { $push: { "Physician": doc._id } }, { new: true }, function(err, newdoc) {
+        // Send any errors to the browser
+        if (err) {
+          res.send(err);
+        }
+        // Or send the newdoc to the browser
+        else {
+          res.send(newdoc);
+        }
+      });
+    }
+  });
 });
 
-app.post("/addData", function(req, res) {
+// app.post("/addData", function(req, res) {
 
-  Data.create(new Data({
+//   Data.create(new Data({
+//     date: req.body.date,
+//     time: req.body.time,
+//     level: req.body.level
+//   }),
+
+//   req.body.password, function(err, user) {
+//     if(err){
+//       console.log(err);
+//       return res.sendFile(path.resolve(__dirname, "public", "index.html"));
+//     }
+//     passport.authenticate("local")(req, res, function() {
+//       res.redirect("/");
+//     });
+//   })
+// });
+
+// New note creation via POST route
+app.post("/addData", function(req, res) {
+  // Use our Note model to make a new note from the req.body
+  var newData = new Data({
     date: req.body.date,
     time: req.body.time,
     level: req.body.level
-  }),
-
-  req.body.password, function(err, user) {
-    if(err){
-      console.log(err);
-      return res.sendFile(path.resolve(__dirname, "public", "index.html"));
+  });
+  // Save the new note to mongoose
+  newData.save(function(error, doc) {
+    // Send any errors to the browser
+    if (error) {
+      res.send(error);
     }
-    passport.authenticate("local")(req, res, function() {
-      res.redirect("/");
-    });
-  })
+    // Otherwise
+    else {
+      // Find our user and push the new note id into the User's notes array
+      User.findOneAndUpdate({}, { $push: { "data": doc._id } }, { new: true }, function(err, newdoc) {
+        // Send any errors to the browser
+        if (err) {
+          res.send(err);
+        }
+        // Or send the newdoc to the browser
+        else {
+          res.send(newdoc);
+        }
+      });
+    }
+  });
 });
-
 
 app.post("/addUser", function(req, res) {
 

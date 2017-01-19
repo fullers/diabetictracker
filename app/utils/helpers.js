@@ -33,10 +33,11 @@ var helper = {
   	});
   },
 
-   getData: function() {
+   getData: function(){
     return axios.get('/getData')
-    .then(function(response){
-        return response;
+    .then(function(results){
+        console.log("axios results", results);
+        return results;
     })
   }
 

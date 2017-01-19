@@ -28,11 +28,11 @@ var Login = React.createClass ({
 				<form action="/login" method="POST">
 					<div className="form-group">
 						<label htmlFor="username"><strong>Username</strong></label>
-						<input type="text" value={this.username} className="form-control" name="username" onChange="" required />
+						<input type="text" value={this.state.value} className="form-control" name="username" onChange="" required />
 					</div>
 					<div className="form-group">
 						<label htmlFor="password"><strong>Password</strong></label>
-						<input type="password" value={this.password} className="form-control" name="password" onChange="" required />
+						<input type="password" value={this.state.value} className="form-control" name="password" onChange="" required />
 					</div>
 					<div className="form-group text-center">
 						<button type="submit" className="btn btn-default" onClick={this.handleLogin}><h4><i className="fa fa-lock"></i> Login</h4>

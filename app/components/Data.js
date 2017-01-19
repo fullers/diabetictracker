@@ -36,7 +36,7 @@ var Data = React.createClass ({
     		console.log('handleAddForm', response);
     		this.state.usr_id = response.usr._id;
 
-    	}).bind(this);
+    	}.bind(this));
     },
 	render: function() {
 		return (
