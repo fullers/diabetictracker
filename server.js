@@ -24,10 +24,9 @@ app.use(express.static(process.cwd() + '/public'));
 
 //Express session
   app.use(session({
-    key: config.site.cookieKeyName,
-    secret: config.site.sessionSecret,
-    resave: true,
-    saveUninitialized: true
+    secret: "Thisismysecretsessionforusers!",
+    resave: false,
+    saveUninitialized: false
   }));
 
 //Passport
