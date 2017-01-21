@@ -25,6 +25,7 @@ The following technologies, tools, and npm packages were used:
 	* passport
 	* passport-local
 	* passport-local-mongoose
+	* bcrypt
 	* MongoDB
 	* Mongoose
 	* bluebird
@@ -75,28 +76,39 @@ The following technologies, tools, and npm packages were used:
 
 ## Requirements
 
-You will need to edit the file called db.js and replace the following code, **Your Production dbURI**. It will be similar to the local which will need to be like `mongodb://.......`
+You will need to edit the files called, production.js in the 'app\config\env' folder and replace the following code, **Your Production dbURI** where `mongodb://.......` shows in the code. I have setup the database connections to use an MVC design by using the Environment variables.
 
 ``` javascript
+**production.js**
+
+var port = process.env.PORT;
+
+module.exports = {
+	port: port,
+	db: 'mongodb://'
+}
+
+**db.js**
+
 var mongoose = require("mongoose");
 var Promise = require("bluebird");
 mongoose.Promise = Promise;
 
 //DB
- var dbURI = 'mongodb://localhost/diabetictracker';
-if (process.env.NODE_ENV === 'production') {
-    dbURI= "Your Production dbURI";
-}
-mongoose.connect(dbURI);
-var db = mongoose.connection;
 
-  db.on("error", function(err) {
-    console.log("Mongoose Error: ", err);
-  });
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-  db.once("open", function() {
-    console.log("Mongoose connection successful.");
-  });
+var config = require('../app/config/config.js');
+var mongoose = require('../app/config/mongoose.js');
+var express = require('express');
+
+var db = mongoose(),
+    app = express();
+
+app.listen(config.port);
+
+module.exports = app;
+console.log(process.env.NODE_ENV  + ' server running at http://localhost:' + config.port);
 ```
 ## Getting Started
 
@@ -109,25 +121,27 @@ var db = mongoose.connection;
 
 ### Diabetic Tracker - Login
 
-![Alt Text](public/assets/images/scrnshot-login.png?raw=true "Login Page")
+![Alt Text](public/assets/images/scrnshot-login.png?raw=true "Login Component")
 
 Enter a user name and password, then click on **Login** button to authenticate. 
 
-![Alt Text](public/assets/images/scrnshot-profile.png?raw=true "Profile Page")
+![Alt Text](public/assets/images/scrnshot-profile.png?raw=true "Profile Component")
 
-If the user does not have a profile setup then click on **Create** button. If the user clicks on **Add Physician**. 
+If the user does not have a profile setup then click on **Create** button. If the user clicks on **Add Physician**, it will open the Physician component. 
 
-![Alt Text](public/assets/images/scrnshot-physician.png?raw=true "Physician Page")
+![Alt Text](public/assets/images/scrnshot-physician.png?raw=true "Physician Component")
 
 If the user creates a profile they can add their physician data (name and email).
 
-![Alt Text](public/assets/images/scrnshot-userchoice.png?raw=true "User Choice Page")
+![Alt Text](public/assets/images/scrnshot-userchoice.png?raw=true "User Choice Component")
 
 The user has a choice to either enter data or view data.
 
-![Alt Text](public/assets/images/scrnshot-enterdata.png?raw=true "Enter Data Page")
+![Alt Text](public/assets/images/scrnshot-enterdata.png?raw=true "Enter Data Component")
 
 The user may enter the date, time, and glucose level (mg/dl).
+
+![Alt Text](public/assets/images/scrnshot-view.png?raw=true "View Component")
 
 
 ## Authors
