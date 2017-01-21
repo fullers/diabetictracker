@@ -7,7 +7,7 @@ var db = require("./db/db.js")
 var passport = require('passport');
 var LocalStrategy= require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
-//var session = require('express-session');
+var session = require('express-session');
 
 // Require Schema from Database
 var User = require('./models/user');
@@ -23,11 +23,12 @@ var PORT = process.env.PORT || 3000;
 app.use(express.static(process.cwd() + '/public'));
 
 //Express session
-  // app.use(session({
-  //   secret: "Thisismysecretsessionforusers!",
-  //   resave: false,
-  //   saveUninitialized: false
-  // }));
+  app.use(session({
+    key: config.site.cookieKeyName,
+    secret: config.site.sessionSecret,
+    resave: true,
+    saveUninitialized: true
+  }));
 
 //Passport
   app.use(passport.initialize());
