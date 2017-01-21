@@ -13,7 +13,7 @@ var Profile = React.createClass ({
 	render: function() {
 		return (
 			<div className="row">
-			<div className="col-md-6 col-md-offset-3">
+			<div className="col-md-6 col-md-offset-2">
 			<div className="well well-sm">
 			<form action="/addUser" method="POST">
 				<div className="form-group text-center">
@@ -39,9 +39,9 @@ var Profile = React.createClass ({
 						<input type="text" value={this.value} className="form-control" name="targetmax" onChange={this.handleUserChange} required />
 				</div>
 				<div className="form-group">
-					<select name="userType">
+					<select className="selectType" name="userType">
 						<option value="User">User</option>
-						<option value="Physician">Dietician</option>
+						<option value="Physician">Physician</option>
 					</select>
 				</div>
 				<div className="form-group text-center">

@@ -58,7 +58,7 @@ app.get("/", autoRedirect, function(req, res) {
 
 //LOCAL AUTH
 
-app.get("/getData", function(req, res) {
+app.get("/getData", isLoggedIn, function(req, res) {
   // Prepare a query to find all users..
   Data.find({})
     // ..and on top of that, populate the data (replace the objectIds in the data array with bona-fide data)
@@ -76,25 +76,6 @@ app.get("/getData", function(req, res) {
     });
 });
 
-
-// app.post("/addPhysician", function(req, res) {
-
-//   Physician.create(new Physician({
-//     name: req.body.name,
-//     email: req.body.email,
-//     physicianType: req.body.physicianType
-//   }),
-
-//   req.body.password, function(err, user) {
-//     if(err){
-//       console.log(err);
-//       return res.sendFile(path.resolve(__dirname, "public", "index.html"));
-//     }
-//     passport.authenticate("local")(req, res, function() {
-//       res.redirect("/");
-//     });
-//   })
-// });
 
 // New Physician creation via POST route
 app.post("/addPhysician", function(req, res) {
@@ -127,26 +108,7 @@ app.post("/addPhysician", function(req, res) {
   });
 });
 
-// app.post("/addData", function(req, res) {
-
-//   Data.create(new Data({
-//     date: req.body.date,
-//     time: req.body.time,
-//     level: req.body.level
-//   }),
-
-//   req.body.password, function(err, user) {
-//     if(err){
-//       console.log(err);
-//       return res.sendFile(path.resolve(__dirname, "public", "index.html"));
-//     }
-//     passport.authenticate("local")(req, res, function() {
-//       res.redirect("/");
-//     });
-//   })
-// });
-
-// New note creation via POST route
+// New data creation via POST route
 app.post("/addData", function(req, res) {
   // Use our Note model to make a new note from the req.body
   var newData = new Data({
@@ -162,7 +124,7 @@ app.post("/addData", function(req, res) {
     }
     // Otherwise
     else {
-      // Find our user and push the new note id into the User's notes array
+      // Find our user and push the new data id into the User's data array
       User.findOneAndUpdate({}, { $push: { "data": doc._id } }, { new: true }, function(err, newdoc) {
         // Send any errors to the browser
         if (err) {
@@ -214,7 +176,7 @@ app.post("/addUser", function(req, res) {
       function reRoute(req,res){
      if (req.user.userType === "User") {
       res.redirect("#/userchoice");
-    } else if (req.userType === "Physician") {
+    } else if (req.user.userType === "Physician") {
       res.redirect("#/view");
     } else {
       res.redirect("#/profile");
@@ -237,10 +199,6 @@ app.post("/addUser", function(req, res) {
     res.sendFile(path.resolve(__dirname, "public", "index.html"))
   });
 
-  // app.get("/profile", function(req,res) {
-  //   res.sendFile(path.resolve(__dirname, "public", "index.html"))
-  // });
-
   app.get("/user", isLoggedIn, function(req,res) {
     if (req.user.userType === "User") {
         res.sendFile(path.resolve(__dirname, "public", "index.html"))
@@ -261,10 +219,6 @@ app.post("/addUser", function(req, res) {
     req.logout();
     res.redirect("/");
   });
-
-  //var routes = require('./controllers/db_controller.js');
-  // app.use('/', isLoggedIn, routes);
-
   
 // Starts the server to begin listening
 // =============================================================

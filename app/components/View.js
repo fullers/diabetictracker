@@ -20,8 +20,9 @@ var View = React.createClass ({
 
 	render: function() {
 		return (
+			<div className="container">
 			<div className="row">
-			<div className="col-md-6 col-md-offset-3">
+			<div className="col-md-6 col-md-offset-2">
 			<div className="panel panel-primary">
 				<div className="panel-heading">
 					<h3 className="panel-title">Data View</h3>
@@ -57,6 +58,19 @@ var View = React.createClass ({
 			</div>
 			</div>
 			</div>
+			<div className="row">
+			<div className="col-md-6 col-md-offset-2">
+			<div className="well well-sm">
+				<form>
+					<div className="form-group text-center">
+						<a href="#/data" className="btn btn-default"><h4><i className="fa fa-plus"></i> Enter Data</h4></a>
+					</div>
+				</form>
+			</div>
+			</div>
+			</div>
+			</div>
+
 
 		)
 	}

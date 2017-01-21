@@ -14,7 +14,10 @@ var Data = React.createClass ({
             level: ""
         };
     },
-    componentDidMount: function() {
+    componentDidMount: function(event) {
+
+    	event.preventDefault();
+
        helpers.getCurrentUser().then(function(response) {
           if (response !== this.state.username) {
             this.setState({ username: response.data.username });
@@ -41,9 +44,9 @@ var Data = React.createClass ({
 	render: function() {
 		return (
 			<div className="row">
-			<div className="col-md-6 col-md-offset-3">
+			<div className="col-md-6 col-md-offset-2">
 			<div className="well well-sm">
-			<form action="/addData" method="POST" onSubmit={this.handleAddForm}>
+			<form method="POST" onSubmit={this.handleAddForm}>
 				<div className="form-group text-center">
 					<h2>Enter Data</h2>
 				</div>

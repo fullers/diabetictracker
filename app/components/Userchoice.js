@@ -3,6 +3,7 @@ var Router = require('react-router');
 
 var Profile = require('./Profile');
 var Data = require('./Data');
+var Logout = require('./children/Logout')
 
 var helpers = require('../utils/helpers');
 
@@ -23,7 +24,7 @@ var UserChoice = React.createClass ({
 	render: function() {
 		return (
 			<div className="row">
-			<div className="col-md-6 col-md-offset-3">
+			<div className="col-md-6 col-md-offset-2">
 			<div className="well well-sm">
 				<form>
 					<div className="form-group text-center">
@@ -36,8 +37,7 @@ var UserChoice = React.createClass ({
 			</div>
 			</div>
 			</div>
-
-		)
+		);
 	}
 });
 

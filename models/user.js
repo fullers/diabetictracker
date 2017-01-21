@@ -9,9 +9,6 @@ var UserSchema = new Schema({
   	type: String,
   	unique: true
   },
-  email: {
-  	type: String
-  },
   password: {
   	type: String
   },
@@ -28,7 +25,7 @@ var UserSchema = new Schema({
   	// Store ObjectIds in the array
   	type: Schema.Types.ObjectId,
   	// The ObjectIds will refer to the ids in the Data model
-  	ref: "data"
+  	ref: "Data"
   }],
   physician: [{
   	// Store ObjectIds in the array

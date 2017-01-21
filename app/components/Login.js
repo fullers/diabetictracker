@@ -23,7 +23,7 @@ var Login = React.createClass ({
 	render: function() {
 		return (
 			<div className="row">
-			<div className="col-md-6 col-md-offset-3">
+			<div className="col-md-6 col-md-offset-2">
 			<div className="well well-sm">
 				<form action="/login" method="POST">
 					<div className="form-group">

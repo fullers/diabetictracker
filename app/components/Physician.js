@@ -10,7 +10,10 @@ var Physician = React.createClass ({
             email: ""
         };
     },
-    componentDidMount: function() {
+    componentDidMount: function(event) {
+
+       event.preventDefault();
+       
        helpers.getCurrentUser().then(function(response) {
           if (response !== this.state.username) {
             this.setState({ username: response.data.username });
@@ -37,7 +40,7 @@ var Physician = React.createClass ({
 	render: function() {
 		return (
 			<div className="row">
-			<div className="col-md-6 col-md-offset-3">
+			<div className="col-md-6 col-md-offset-2">
 			<div className="well well-sm">
 			<form action="/addPhysician" method="POST" onSubmit={this.handleAddForm}>
 				<div className="form-group text-center">
@@ -52,7 +55,7 @@ var Physician = React.createClass ({
 					<input type="email" value={this.state.value} className="form-control" name="email" onChange={this.handleUserChange} required />
 				</div>
 				<div className="form-group">
-					<select name="physcianType">
+					<select className="selectType" name="physcianType">
 						<option value="Doctor">Doctor</option>
 						<option value="Dietician">Dietician</option>
 					</select>
