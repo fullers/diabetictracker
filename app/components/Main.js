@@ -14,8 +14,8 @@ var Main = React.createClass({
 					<div className="row">
 						<div className="col-md-8 col-md-offset-1">
 							<div className="jumbotron">
-								<h1 className="text-center"><img src="/assets/images/Diabetes Monitor-48.png"/> Diabetic Tracker</h1>
-								<p className="lead text-center">Track your diabetic glucose levels!</p> 
+								<h1 className="text-center"><img src="/assets/images/Diabetes Monitor-48.png"/> Glucose Tracker</h1>
+								<p className="lead text-center">Track your diabetes glucose levels!</p> 
 							</div>
 						</div>
 					</div>

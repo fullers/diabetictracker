@@ -1,13 +1,14 @@
-# Diabetic Tracker
+# Glucose Tracker
 This is a full-stack web application that uses Node.js, Express, React.js, and MongoDB with Mongoose.
 
-You may go to [https://diabetictracker.herokuapp.com](https://diabetictracker.herokuapp.com) to view a demo of the application.
+You may go to [https://glucosetracker.herokuapp.com](https://glucosetracker.herokuapp.com) to view a demo of the application.
 
 ## Technologies used
 
 The following technologies, tools, and npm packages were used:
 * Node.js
 * React.js
+* Bootstrap
 * NPM Packages
 	* express
 	* body-parser
@@ -112,9 +113,9 @@ console.log(process.env.NODE_ENV  + ' server running at http://localhost:' + con
 ```
 ## Getting Started
 
-* Use git clone to copy this git hub 
+* Use git clone to copy this git hub. 
 
-* Open the command line and navigate to the folder when you cloned the files
+* Open the command line and navigate to the folder when you cloned the files.
 	* Run `npm install` in terminal or command line to install dependencies.  
 	* Use run  `node server.js` to start the application.
 * use localhost:3000 in your browser to access this application.
